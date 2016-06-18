@@ -1,0 +1,109 @@
+﻿@charset "utf-8";
+
+body {
+	font-family: "Georgia", serif;
+	font-size: 16px;
+	margin: 0;
+}
+
+h1 {
+	color: #222;
+	margin: 0 0 20px;
+}
+h2 {
+	color: #555;
+	font-size: 22px;
+	margin: 0 0 8px;
+	border-bottom: 1px solid #CCC;
+}
+p {
+	text-indent: 2em;
+	line-height: 1.3em;
+	margin: 0 0 15px;
+}
+p.no-indent {
+    text-indent: 0;
+    line-height: 1.3em;
+    margin: 0 0 15px;
+}
+a:link, a:visited, a:active {
+	color: #036;
+	text-decoration: underline;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+
+#container {
+	width: 700px;
+	margin: 10px auto 0;
+	padding: 10px 15px 0;
+	border-left: 1px solid #EDEDED;
+	border-bottom: 1px solid #EDEDED;
+	border-right: 1px solid #EDEDED;
+}
+
+#main {
+	overflow: hidden;
+}
+
+#image {
+	float: right;
+    margin: 0 0 20px 20px;
+}
+#image img {
+	border: 1px solid #CCC;
+}
+.caption {
+	font-size: 12px;
+	text-align: center;
+	margin: 3px 0 0;
+}
+.caption-strong {
+	font-weight: bold;
+	color: #333;
+}
+
+/* for 850px or less */
+@media screen and (max-width: 740px) {
+    h1 {
+        font-size: 28px;
+    }
+    #container {
+        width: auto;
+        margin: 10px 10px 0;
+        border: none;
+    }
+}
+
+/* for 480px or less (mobile) */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 28px;
+        margin: 0 0 15px;
+    }
+    #container {
+        width: auto;
+        margin: 5px 0 0;
+        border: none;
+    }
+    #bio {
+        float: left;
+    }
+    #image {
+        float: left;
+        margin: 0 0 20px;
+    }
+    #image img {
+        width: 125px;
+        height: 125px;
+    }
+    .caption {
+        font-size: 14px;
+        text-align: left;
+    }
+    p {
+        text-indent: 0;
+    }
+}
