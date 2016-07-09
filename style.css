@@ -1,43 +1,72 @@
 ﻿@charset "utf-8";
 
 body {
-	font-family: "Georgia", serif;
+	font-family: Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 16px;
 	margin: 0;
 }
 
 h1 {
 	color: #222;
-	margin: 0 0 20px;
+	margin: 0 0 15px;
+    font-weight: normal;
 }
+
 h2 {
-	color: #555;
-	font-size: 22px;
-	margin: 0 0 8px;
-	border-bottom: 1px solid #CCC;
+    color: #999;
+    font-weight: normal;
+    font-size: 22px;
+    margin: 5px 0 10px;
 }
+
+h3 {
+    color: #222;
+    margin: 0 0 8px;
+    font-weight: normal;
+    font-size: 20px;
+}
+
 p {
-	text-indent: 2em;
-	line-height: 1.3em;
+	text-indent: 0;
+	line-height: 1.4em;
 	margin: 0 0 15px;
 }
-p.no-indent {
-    text-indent: 0;
-    line-height: 1.3em;
-    margin: 0 0 15px;
-}
+
 a:link, a:visited, a:active {
-	color: #036;
-	text-decoration: underline;
+    color: dodgerblue;
+    text-decoration: none;
 }
 a:hover {
-	text-decoration: underline;
+    color: cornflowerblue;
 }
 
+#header {
+    background-color: #444;
+    border-bottom: 2px solid dodgerblue;
+}
+#header a {
+    color: white;
+}
 
-#container {
+#header-content {
+    width: 700px;
+    margin: 0 auto 0 auto;
+    color: white;
+    padding: 15px;
+    font-size: 20px;
+}
+
+#header-about {
+    float: right;
+    font-size: 14px;
+}
+#header-about a {
+    vertical-align: middle;
+}
+
+#content {
 	width: 700px;
-	margin: 10px auto 0;
+	margin: 10px auto;
 	padding: 10px 15px 0;
 	border-left: 1px solid #EDEDED;
 	border-bottom: 1px solid #EDEDED;
@@ -55,38 +84,55 @@ a:hover {
 #image img {
 	border: 1px solid #CCC;
 }
-.caption {
+.contact {
 	font-size: 12px;
 	text-align: center;
 	margin: 3px 0 0;
 }
-.caption-strong {
-	font-weight: bold;
-	color: #333;
+
+.caption {
+    color: gray;
+    font-size: 14px;
+}
+
+blockquote {
+    border-left: 2px solid gray;
+    padding: 5px 0 5px 10px;
+    color: #555;
+}
+.big-quote {
+    padding: 25px;
+    color: dodgerblue;
+    text-transform: uppercase;
+    font-style: italic;
+    font-size: 32px;
+    line-height: 34px;
+}
+
+pre {
+    font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif; /* Thanks, Stack Overflow! */
+    font-size: 14px;
+    padding: 10px;
+    background-color: #eff0f1;
+    overflow: auto; /* Show horizontal scroll bar if text doesn't fit in the space. */
 }
 
 /* for 850px or less */
 @media screen and (max-width: 740px) {
-    h1 {
-        font-size: 28px;
-    }
-    #container {
+    #header-content {
         width: auto;
-        margin: 10px 10px 0;
+    }
+    #content {
+        width: auto;
+        margin: 10px 10px 25px;
         border: none;
     }
 }
 
-/* for 480px or less (mobile) */
+/* for 480px or less */
 @media screen and (max-width: 480px) {
-    h1 {
-        font-size: 28px;
-        margin: 0 0 15px;
-    }
-    #container {
-        width: auto;
-        margin: 5px 0 0;
-        border: none;
+    #content {
+        margin: 5px 0 25px;
     }
     #bio {
         float: left;
@@ -99,11 +145,16 @@ a:hover {
         width: 125px;
         height: 125px;
     }
-    .caption {
+    .contact {
         font-size: 14px;
         text-align: left;
     }
-    p {
-        text-indent: 0;
+}
+
+/* For 320px or less */
+@media screen and (max-width: 320px) {
+    #header-about {
+        float: none;
+        margin: 5px 0 0 0;
     }
 }
