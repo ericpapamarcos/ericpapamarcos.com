@@ -1,2 +1,2 @@
 # ericpapamarcos.com
-My personal website
+My personal website and blog.
