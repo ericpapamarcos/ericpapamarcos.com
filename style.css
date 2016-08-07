@@ -56,11 +56,14 @@ a:hover {
 }
 
 #header-content {
-    width: 700px;
+    width: 720px;
     margin: 0 auto;
     color: white;
     padding: 15px 5px;
     font-size: 20px;
+}
+#header-content a {
+    padding: 15px 10px 14px 10px;
 }
 
 #header-links {
@@ -68,7 +71,7 @@ a:hover {
     font-size: 14px;
 }
 #header-links a {
-    margin: 0 0 0 20px;
+    padding: 19px 10px;
     vertical-align: middle;
 }
 
@@ -144,7 +147,6 @@ pre {
 @media screen and (max-width: 800px) {
     #header-content {
         width: auto;
-        margin: 0 10px;
         padding: 15px;
     }
     #content {
@@ -158,6 +160,7 @@ pre {
 @media screen and (max-width: 480px) {
     #header-content {
         margin: 0;
+        padding: 15px 5px;
     }
     #content {
         margin: 5px 0 25px;
@@ -181,12 +184,15 @@ pre {
 
 /* For 320px or less */
 @media screen and (max-width: 320px) {
+    #header-content a {
+        padding: 5px 10px;
+    }
     #header-links {
         float: none;
-        margin: 5px 0 0 0;
+        margin: 10px 0 0 0;
     }
     #header-links a {
-        margin: 0 20px 0 0;
+        padding: 5px 10px;
         vertical-align: middle;
     }
 }
