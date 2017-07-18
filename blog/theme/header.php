@@ -9,7 +9,7 @@
 <?php endif; ?>
 <?php endif; ?>
 		<link rel="stylesheet" type="text/css" href="/style.css" />
-        <link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="shortcut icon" type="image/png" href="/favicon.png">
         <title><?php wp_title('-', true, 'right'); bloginfo('name'); ?></title>
     </head>
 
