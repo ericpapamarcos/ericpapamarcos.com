@@ -7,10 +7,14 @@
 <?php $tags = get_the_tags(); if ($tags) : ?>
 		<meta name="keywords" content="<?php $count = count($tags); $counter = 1; foreach($tags as $tag) { echo $tag->name; if ($counter != $count) { echo ", "; } $counter++; } ?>" />
 <?php endif; ?>
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@epaps" />
+		<meta name="twitter:title" content="<?php echo get_the_title(); ?>" />
+		<meta name="twitter:description" content="<?php echo get_the_excerpt(); ?>" />
 <?php endif; ?>
 		<link rel="stylesheet" type="text/css" href="/style.css" />
 		<link rel="shortcut icon" type="image/png" href="/favicon.png">
-        <title><?php wp_title('-', true, 'right'); bloginfo('name'); ?></title>
+		<title><?php wp_title('-', true, 'right'); bloginfo('name'); ?></title>
     </head>
 
     <body>
