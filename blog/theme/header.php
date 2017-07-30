@@ -7,7 +7,13 @@
 <?php $tags = get_the_tags(); if ($tags) : ?>
 		<meta name="keywords" content="<?php $count = count($tags); $counter = 1; foreach($tags as $tag) { echo $tag->name; if ($counter != $count) { echo ", "; } $counter++; } ?>" />
 <?php endif; ?>
+<?php if (has_post_thumbnail()) : ?>
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:image" content="<?php the_post_thumbnail_url(); ?>" />
+<?php else : ?>
 		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:image" content="https://<?php echo $_SERVER['SERVER_NAME']; ?>/images/logo.png" />
+<?php endif; ?>
 		<meta name="twitter:site" content="@epaps" />
 		<meta name="twitter:title" content="<?php echo get_the_title(); ?>" />
 		<meta name="twitter:description" content="<?php echo get_the_excerpt(); ?>" />

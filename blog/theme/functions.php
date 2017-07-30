@@ -22,4 +22,9 @@ function exclude_category($query) {
 	return $query;
 }
 
+// Add support for featured images.
+// Featured images are essentially thumbnails that represent the post.
+// These images are used for things like Twitter Summary Cards.
+add_theme_support('post-thumbnails'); 
+
 ?>
