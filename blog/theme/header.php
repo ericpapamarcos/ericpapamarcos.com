@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<!-- The source code for this website is available at: https://github.com/ericpapamarcos/ericpapamarcos.com -->
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
