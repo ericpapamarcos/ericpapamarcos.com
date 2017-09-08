@@ -19,6 +19,8 @@
 		<meta name="twitter:title" content="<?php echo get_the_title(); ?>" />
 		<meta name="twitter:description" content="<?php echo get_the_excerpt(); ?>" />
 <?php endif; ?>
+        <meta name="msapplication-TileImage" content="/images/logo-transparent.png" />
+        <meta name="msapplication-TileColor" content="#444444" />
 		<link rel="stylesheet" type="text/css" href="/style.css" />
 		<link rel="shortcut icon" type="image/png" href="/favicon.png">
 		<title><?php wp_title('-', true, 'right'); bloginfo('name'); ?></title>
