@@ -20,6 +20,8 @@
 <?php endif; ?>
 		<meta name="twitter:site" content="@epaps" />
 <?php endif; ?>
+        <meta name="msapplication-TileImage" content="/images/logo-transparent.png" />
+        <meta name="msapplication-TileColor" content="#444444" />
 		<link rel="stylesheet" type="text/css" href="/style.css" />
 		<link rel="shortcut icon" type="image/png" href="/favicon.png">
 		<title><?php wp_title('-', true, 'right'); bloginfo('name'); ?></title>
