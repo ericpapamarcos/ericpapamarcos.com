@@ -25,7 +25,7 @@ h2 {
 }
 
 h3 {
-    color: #999;
+    color: #555;
     font-weight: normal;
     font-size: 22px;
     margin: 5px 0 10px;
@@ -35,6 +35,10 @@ p {
     text-indent: 0;
     line-height: 1.4em;
     margin: 0 0 15px;
+}
+
+li {
+    line-height: 1.4em;
 }
 
 a:link,
@@ -85,7 +89,6 @@ a:hover {
     border-bottom: 1px solid #EDEDED;
     border-right: 1px solid #EDEDED;
 }
-
 #content img {
     max-width: 100%;
     height: auto;
@@ -161,6 +164,15 @@ pre {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+/* WordPress-specific styles */
+div.wp-caption {
+    max-width: 100%; /* WordPress adds an inline width to images with captions, which can stretch larger than the width of the page, so this makes sure the image always fits within the container. */
+}
+.wp-caption-text {
+    color: gray;
+    font-size: 12px;
 }
 
 /* for 800px or less */

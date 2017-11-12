@@ -8,16 +8,17 @@
 <?php $tags = get_the_tags(); if ($tags) : ?>
 		<meta name="keywords" content="<?php $count = count($tags); $counter = 1; foreach($tags as $tag) { echo $tag->name; if ($counter != $count) { echo ", "; } $counter++; } ?>" />
 <?php endif; ?>
+		<meta property="og:url" content="<?php echo get_permalink(); ?>" />
+		<meta property="og:title" content="<?php echo get_the_title(); ?>" />
+		<meta property="og:description" content="<?php echo get_the_excerpt(); ?>" />
 <?php if (has_post_thumbnail()) : ?>
+		<meta property="og:image" content="<?php the_post_thumbnail_url( 'large' ); ?>" />
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:image" content="<?php the_post_thumbnail_url(); ?>" />
 <?php else : ?>
+		<meta property="og:image" content="https://<?php echo $_SERVER['SERVER_NAME']; ?>/images/logo.png" />
 		<meta name="twitter:card" content="summary" />
-		<meta name="twitter:image" content="https://<?php echo $_SERVER['SERVER_NAME']; ?>/images/logo.png" />
 <?php endif; ?>
 		<meta name="twitter:site" content="@epaps" />
-		<meta name="twitter:title" content="<?php echo get_the_title(); ?>" />
-		<meta name="twitter:description" content="<?php echo get_the_excerpt(); ?>" />
 <?php endif; ?>
 		<link rel="stylesheet" type="text/css" href="/style.css" />
 		<link rel="shortcut icon" type="image/png" href="/favicon.png">
