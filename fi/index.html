@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html lang="fi">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" type="text/css" href="/style.css">
+        <style>
+            body {
+                background-color: black;
+                color: white;
+                
+            }
+
+            /* Use all vertical space */
+            html, body {
+                height: 100%;
+                display: grid;
+                margin: 0 10px;
+            }
+
+            .item {
+                margin: auto; /* Center vertically and horizontally */
+                font-size: 36px;
+            }
+
+        </style>
+        <title>Tänään on...</title>
+    </head>
+
+    <body>
+
+        <div class="item" id="dateInFinnish">Tänään on...</div>
+
+    </body>
+
+</html>
+
+<script type="text/javascript">
+
+    // Format the current date in Finnish.
+    // Format: "maanantai 9. heinäkuuta"
+    function updateDate() {
+        var date = new Date();
+        var options = { weekday: 'long', month: 'long', day: 'numeric' };
+        document.getElementById("dateInFinnish").textContent = date.toLocaleDateString('fi-FI', options);
+    }
+
+    // Update date on page load.
+    updateDate();
+
+    // Update date every minute.
+    setInterval(function() {
+        updateDate();
+    }, 60 * 1000)
+
+</script>
