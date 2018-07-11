@@ -4,6 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <meta name="msapplication-TileImage" content="fi-logo-transparent.png" />
         <meta name="msapplication-TileColor" content="#444444" />
         <meta name="msapplication-notification" content="frequency=30;polling-uri=https://ericpapamarcos.com/fi/tile-feed.php"/>
@@ -13,28 +14,36 @@
             body {
                 background-color: black;
                 color: white;
-                
             }
 
             /* Use all vertical space */
             html, body {
                 height: 100%;
                 display: grid;
+                grid-template-rows: auto min-content;
                 margin: 0 10px;
             }
 
             .item {
                 margin: auto; /* Center vertically and horizontally */
                 font-size: 36px;
+                grid-row: 1/1;
             }
 
+            .bottomItem {
+                grid-row: 2/2;
+                margin: 0 0 15px 0;
+                text-align: right;
+            }
         </style>
         <title>Tänään</title>
     </head>
 
     <body>
 
-        <div class="item" id="dateInFinnish">Tänään on...</div>
+        <div class="item" id="dateInFinnish">tänään on...</div>
+
+        <div class="bottomItem" id="colorInFinnish">väri</div>
 
     </body>
 
@@ -57,5 +66,79 @@
     setInterval(function() {
         updateDate();
     }, 60 * 1000)
+
+    // Use a random color for the page background.
+    // Colors from: https://fluentcolors.com/
+
+    // Black is the default color.
+    var color = "#000000";
+    var colorName = "musta";
+
+    // Generator a random number between 0 and 11.
+    var randomNumber = Math.floor(Math.random() * 12);
+    switch (randomNumber) {
+        // Red
+        case 0:
+            color = "#E81123"
+            colorName = "punainen"
+            break;
+        // Orange
+        case 1:
+            color = "#F7630C"
+            colorName = "oranssi"
+            break;
+        // Yellow
+        case 2:
+            color = "#FFB900"
+            colorName = "keltainen"
+            break;
+        // Green
+        case 3:
+            color = "#107C10"
+            colorName = "vihreä"
+            break;
+        // Blue
+        case 4:
+            color = "#0063B1"
+            colorName = "sininen"
+            break;
+        // Pink
+        case 5:
+            color = "#E3008C"
+            colorName = "pinkki"
+            break;
+        // Purple
+        case 6:
+            color = "#9A0089"
+            colorName = "sinipunainen"
+            break;
+        // Violet
+        case 7:
+            color = "#744DA9"
+            colorName = "violetti"
+            break;
+        // White
+        case 8:
+            color = "#FFFFFF"
+            colorName = "valkoinen"
+            break;
+        // Gray
+        case 9:
+            color = "#767676"
+            colorName = "harmaa"
+            break;
+        // Brown
+        case 10:
+            color = "#795548"
+            colorName = "ruskea"
+            break;
+        default:
+            break;
+    }
+
+    // Set the background color, foreground color, and label.
+    document.body.style.backgroundColor = color;
+    if (colorName === "valkoinen" || colorName === "keltainen") { document.body.style.color = "#000000"; } 
+    document.getElementById("colorInFinnish").textContent = colorName;
 
 </script>
