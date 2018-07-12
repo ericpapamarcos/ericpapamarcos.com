@@ -27,9 +27,13 @@
             /* Use all vertical space */
             html, body {
                 height: 100%;
+            }
+
+            #container {
+                height: 100%;
                 display: grid;
                 grid-template-rows: auto min-content;
-                margin: 0 10px;
+                padding: 0 10px;
             }
 
             .item {
@@ -49,104 +53,115 @@
 
     <body>
 
-        <div class="item" id="dateInFinnish">tänään on...</div>
+        <div id="container">
+            <div class="item" id="dateInFinnish" onclick="updateColor">tänään on...</div>
+            <div class="bottomItem" id="colorInFinnish">väri</div>
+        </div>
 
-        <div class="bottomItem" id="colorInFinnish">väri</div>
+        <script>
+
+            // Format the current date in Finnish.
+            // Format: "maanantai 9. heinäkuuta"
+            function updateDate() {
+                var date = new Date();
+                var options = { weekday: 'long', month: 'long', day: 'numeric' };
+                document.getElementById("dateInFinnish").textContent = date.toLocaleDateString('fi-FI', options);
+            }
+        
+            // Update date on page load.
+            updateDate();
+        
+            // Update date every minute.
+            setInterval(function() {
+                updateDate();
+            }, 60 * 1000)
+
+            // Tap on background to change color.
+            document.getElementById("container").addEventListener("click", updateColor);
+
+            // Update the page background with a random color.
+            // Colors from: https://fluentcolors.com/
+            function updateColor() {
+
+                // Black is the default color.
+                var color = "#000000";
+                var colorName = "musta";
+            
+                // Generator a random number between 0 and 11.
+                var randomNumber = Math.floor(Math.random() * 12);
+                switch (randomNumber) {
+                    // Red
+                    case 0:
+                        color = "#E81123"
+                        colorName = "punainen"
+                        break;
+                    // Orange
+                    case 1:
+                        color = "#F7630C"
+                        colorName = "oranssi"
+                        break;
+                    // Yellow
+                    case 2:
+                        color = "#FFB900"
+                        colorName = "keltainen"
+                        break;
+                    // Green
+                    case 3:
+                        color = "#107C10"
+                        colorName = "vihreä"
+                        break;
+                    // Blue
+                    case 4:
+                        color = "#0063B1"
+                        colorName = "sininen"
+                        break;
+                    // Pink
+                    case 5:
+                        color = "#E3008C"
+                        colorName = "pinkki"
+                        break;
+                    // Purple
+                    case 6:
+                        color = "#9A0089"
+                        colorName = "sinipunainen"
+                        break;
+                    // Violet
+                    case 7:
+                        color = "#744DA9"
+                        colorName = "violetti"
+                        break;
+                    // White
+                    case 8:
+                        color = "#FFFFFF"
+                        colorName = "valkoinen"
+                        break;
+                    // Gray
+                    case 9:
+                        color = "#767676"
+                        colorName = "harmaa"
+                        break;
+                    // Brown
+                    case 10:
+                        color = "#795548"
+                        colorName = "ruskea"
+                        break;
+                    default:
+                        break;
+                }
+            
+                // Set the background color, foreground color, and label.
+                document.body.style.backgroundColor = color;
+                if (colorName === "valkoinen" || colorName === "keltainen") { document.body.style.color = "#000000"; } else { document.body.style.color = "#FFFFFF"; }
+                document.getElementById("colorInFinnish").textContent = colorName;
+
+                console.log("Changing color to " + colorName);
+
+            }
+        
+            updateColor();
+        
+        </script>    
 
     </body>
 
 </html>
-
-<script type="text/javascript">
-
-    // Format the current date in Finnish.
-    // Format: "maanantai 9. heinäkuuta"
-    function updateDate() {
-        var date = new Date();
-        var options = { weekday: 'long', month: 'long', day: 'numeric' };
-        document.getElementById("dateInFinnish").textContent = date.toLocaleDateString('fi-FI', options);
-    }
-
-    // Update date on page load.
-    updateDate();
-
-    // Update date every minute.
-    setInterval(function() {
-        updateDate();
-    }, 60 * 1000)
-
-    // Use a random color for the page background.
-    // Colors from: https://fluentcolors.com/
-
-    // Black is the default color.
-    var color = "#000000";
-    var colorName = "musta";
-
-    // Generator a random number between 0 and 11.
-    var randomNumber = Math.floor(Math.random() * 12);
-    switch (randomNumber) {
-        // Red
-        case 0:
-            color = "#E81123"
-            colorName = "punainen"
-            break;
-        // Orange
-        case 1:
-            color = "#F7630C"
-            colorName = "oranssi"
-            break;
-        // Yellow
-        case 2:
-            color = "#FFB900"
-            colorName = "keltainen"
-            break;
-        // Green
-        case 3:
-            color = "#107C10"
-            colorName = "vihreä"
-            break;
-        // Blue
-        case 4:
-            color = "#0063B1"
-            colorName = "sininen"
-            break;
-        // Pink
-        case 5:
-            color = "#E3008C"
-            colorName = "pinkki"
-            break;
-        // Purple
-        case 6:
-            color = "#9A0089"
-            colorName = "sinipunainen"
-            break;
-        // Violet
-        case 7:
-            color = "#744DA9"
-            colorName = "violetti"
-            break;
-        // White
-        case 8:
-            color = "#FFFFFF"
-            colorName = "valkoinen"
-            break;
-        // Gray
-        case 9:
-            color = "#767676"
-            colorName = "harmaa"
-            break;
-        // Brown
-        case 10:
-            color = "#795548"
-            colorName = "ruskea"
-            break;
-        default:
-            break;
-    }
-
-    // Set the background color, foreground color, and label.
-    document.body.style.backgroundColor = color;
-    if (colorName === "valkoinen" || colorName === "keltainen") { document.body.style.color = "#000000"; } 
-    document.getElementById("colorInFinnish").textContent = colorName;
-
-</script>
