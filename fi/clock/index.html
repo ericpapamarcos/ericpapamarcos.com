@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="msapplication-TileImage" content="../fi-logo-transparent.png" />
+        <meta name="msapplication-TileColor" content="#444444" />
+        <link rel="apple-touch-icon" href="../fi-apple-touch-icon.png">
+        <!-- iPhone X (1125px x 2436px) -->
+        <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="../fi-launch-1125x2436.png">
+        <!-- iPhone 8, 7, 6s, 6 (750px x 1334px) -->
+        <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="../fi-launch-750x1334.png">
+        <!-- iPhone 8 Plus, 7 Plus, 6s Plus, 6 Plus (1242px x 2208px) -->
+        <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)" href="../fi-launch-1242x2208.png">
+        <!-- iPhone 5 (640px x 1136px) -->
+        <link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="../fi-launch-640x1136.png">
+        <link rel="stylesheet" type="text/css" href="/style.css">
+        <style>
+
+            html, body {
+                height: 100%;
+                font-size: 36px;
+            }
+
+            body {
+                background-color: #333;
+                color: white;
+            }
+
+            #container {
+                height: 100%;
+                display: grid;
+                grid-template-rows: auto auto;
+            }
+
+            #top-container {
+                grid-row: 1/1;
+                display: grid;
+                background-color: #333;
+            }
+
+            #bottom-container {
+                grid-row: 2/2;
+                display: grid;
+                background-color: #666;
+            }
+
+            .item {
+                margin: auto; /* Center vertically and horizontally */
+                display: grid;
+                grid-template-columns: auto auto;
+            }
+
+            .city-name {
+                font-size: 22px;
+                margin: auto 20px auto 0;
+                grid-column: 1/1;
+            }
+
+            .time {
+                font-size: 44px;
+                letter-spacing: -5px;
+                grid-column: 2/2;
+            }
+
+        </style>
+        <title>Clock</title>
+    </head>
+
+    <body>
+
+        <div id="container">
+
+            <div id="top-container">
+                <div class="item">
+                    <div class="city-name">🇺🇸 Seattle</div>
+                    <div id="SeattleTime" class="time">00:00</div>
+                </div>
+            </div>
+
+            <div id="bottom-container">
+                <div class="item">
+                    <div class="city-name">🇫🇮 Helsinki</div>
+                    <div id="HelsinkiTime" class="time">00:00</div>
+                </div>
+            </div>
+
+        </div>
+
+        <script>
+
+            // Update initial city times.
+            updateTimes();
+
+            // Set times to update again at the next whole minute.
+            var seconds = 60 - new Date().getSeconds();
+            var timer = setInterval( function() { updateTimes("first") }, seconds * 1000);
+        
+            function updateTimes(input) {
+                
+                // Seattle time.
+                var options = {
+                    timeZone: 'America/Los_Angeles',
+                    hour: 'numeric', minute: 'numeric'
+                    }, formatter = new Intl.DateTimeFormat([], options);
+                document.getElementById("SeattleTime").textContent = formatter.format(new Date());
+
+                // Helsinki time.
+                var options = {
+                    timeZone: 'Europe/Helsinki',
+                    hour: 'numeric', minute: 'numeric'
+                    }, formatter = new Intl.DateTimeFormat([], options);
+                document.getElementById("HelsinkiTime").textContent = formatter.format(new Date());
+
+                console.log("Helsinki time updated to: " + formatter.format(new Date()));
+
+                // Update time every minute after the first update.
+                if (input === "first") {
+                    clearInterval(timer);
+                    setInterval(updateTimes, 60 * 1000);
+                    console.log("Reset timer to run every 60 seconds");
+                }
+            }
+
+        </script>
+
+    </body>
+
+</html>
