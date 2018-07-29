@@ -60,21 +60,86 @@
 
         <script>
 
+            var currentDate = new Date();
+
             // Format the current date in Finnish.
             // Format: "maanantai 9. heinäkuuta"
-            function updateDate() {
-                var date = new Date();
+            function updateDate(date) {
+                console.log("Updating date");
                 var options = { weekday: 'long', month: 'long', day: 'numeric' };
                 document.getElementById("dateInFinnish").textContent = date.toLocaleDateString('fi-FI', options);
             }
         
             // Update date on page load.
-            updateDate();
+            updateDate(currentDate);
         
             // Update date every minute.
             setInterval(function() {
-                updateDate();
+                // Reset date.
+                currentDate = new Date();
+
+                updateDate(currentDate);
             }, 60 * 1000);
+            
+            // Swipe to change the date.
+            document.getElementById("container").addEventListener("touchstart", touchStarted);
+            document.getElementById("container").addEventListener("touchmove", touchMoved);
+            document.getElementById("container").addEventListener("touchend", touchEnded);
+
+            var xTouchDown = null;
+            var yTouchDown = null;
+            var xTouchUp = null;
+            var yTouchUp = null;
+
+            function touchStarted(event) {
+                console.log("Touch started");
+                xTouchDown = event.touches[0].clientX;
+                yTouchDown = event.touches[0].clientY;
+            }
+
+            function touchMoved(event) {
+                console.log("Touch moved");
+                xTouchUp = event.touches[0].clientX;
+                yTouchUp = event.touches[0].clientY;
+            }
+
+            function touchEnded(event) {
+
+                console.log("Touch ended");
+
+                if (!xTouchDown || !yTouchDown || !xTouchUp || !yTouchUp) {
+                    return;
+                }               
+
+                var xDiff = xTouchDown - xTouchUp;
+                var yDiff = yTouchDown - yTouchUp;
+
+                // Check whether the swipe was horizontal.
+                if (Math.abs(xDiff) > Math.abs(yDiff)) {
+
+                    // Swipe from right to left.
+                    if (xDiff > 0) {
+                        // Go forward a day.
+                        currentDate = addDays(currentDate, 1);
+                        updateDate(currentDate);
+                    }
+                    // Swipe from left to right.
+                    else {
+                        // Go back a day.
+                        currentDate = addDays(currentDate, -1);
+                        updateDate(currentDate);
+                    }
+                }
+                else {
+                    event.preventDefault();
+                }
+            }
+
+            function addDays(date, days) {
+                var result = new Date(date);
+                result.setDate(result.getDate() + days);
+                return result;
+            }
 
             // Tap on background to change color.
             document.getElementById("container").addEventListener("click", updateColor);
@@ -164,11 +229,11 @@
 
         <script>
             // Register service worker to support offline mode (if supported by the browser).
-            if('serviceWorker' in navigator) {
+            /*if('serviceWorker' in navigator) {
                 window.addEventListener('load', function() {
                     navigator.serviceWorker.register('sw.js').then(function(registration) { console.log("Service worker registered with scope:", registration.scope); });
                 })
-            }
+            }*/
         </script>
 
     </body>

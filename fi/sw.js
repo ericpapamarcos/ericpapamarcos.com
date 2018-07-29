@@ -4,7 +4,7 @@ self.addEventListener('install', function(event) {
         caches.open('fi').then(function(cache) {
             return cache.addAll([
                 './', // The current directory (fi).
-                '/style.css' // The root style sheet.
+                '/style.css' // The root stylesheet.
             ]);
         })
     );
