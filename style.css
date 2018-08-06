@@ -100,15 +100,15 @@ a:hover {
 
 #image {
     float: right;
-    margin: 0 0 20px 20px;
+    margin: 0 5px 18px 20px;
 }
 #image img {
-    border: 1px solid #CCC;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.22);
 }
 .contact {
     font-size: 12px;
     text-align: center;
-    margin: 3px 0 0;
+    margin: 10px 0 0;
 }
 
 .caption {
